@@ -69,8 +69,21 @@ sub init
     $c->redirect_to($c->url_for('audit', year => $year, month => sprintf("%02d", $month), day => sprintf("%02d", $day)));
   });
   
-  # FIXME: require accounts
-  $self->app->routes->route('/audit/:year/:month/:day')->name('audit')->get(sub {
+  # FIXME: provide an interface for this
+  # in Clustericious
+  my $auth = sub {
+    my $c = shift;
+    my $plugin = $self->_self_auth_plugin;
+    return 1 unless defined $plugin;
+    return 0 unless $plugin->authenticate($c, 'ACPS');
+    return 0 unless $plugin->authorize($c, 'accounts', $c->req->url->path);
+    return 1;
+  };
+  
+  my $authz = sub {
+  };
+  
+  $self->app->routes->bridge->to({ cb => $auth })->route('/audit/:year/:month/:day')->name('audit')->get(sub {
     my($c) = @_;
     my $year  = $c->stash('year');
     my $month = $c->stash('month');
