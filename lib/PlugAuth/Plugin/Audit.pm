@@ -8,6 +8,7 @@ use Path::Class::Dir;
 use Path::Class::File;
 use File::HomeDir;
 use YAML qw( Dump LoadFile );
+use DateTime;
 
 with 'PlugAuth::Role::Plugin';
 
@@ -81,7 +82,15 @@ sub init
     my $filename = $self->log_filename({ year => $year, month => $month, day => $day });
     return $c->render_message('not ok', 404)
       unless -r $filename;
-    my(@events) = LoadFile($filename->stringify);
+    my(@events) = map {
+      my $event = $_;
+      my $dt = DateTime->from_epoch( epoch => $event->{time} );
+      $dt->set_time_zone('local');
+      $event->{time_epoch}    = delete $event->{time};
+      $event->{time_human}    = $dt->strftime("%a, %d %b %Y %H:%M:%S %z");
+      $event->{time_computer} = $dt->strftime("%Y-%m-%dT%H:%M:%S%z");
+      $event;
+    } LoadFile($filename->stringify);
     $c->stash->{autodata} = \@events;
   });
   

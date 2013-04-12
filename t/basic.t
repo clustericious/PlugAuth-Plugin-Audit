@@ -62,7 +62,7 @@ $t->get_ok("/audit/$year/$month/$day")
   ->status_is(200);
 
 is $t->tx->res->json->[0]->{event}, 'create_user', 'event = create_user';
-like $t->tx->res->json->[0]->{time},  qr{^\d+$}, 'time = ' . $t->tx->res->json->[0]->{time};
+like $t->tx->res->json->[0]->{time_epoch},  qr{^\d+$}, 'time = ' . $t->tx->res->json->[0]->{time};
 is $t->tx->res->json->[0]->{user},  'primus', 'user = primus';
   
 $year++;
@@ -72,5 +72,3 @@ $t->get_ok("/audit/$year/$month/$day")
 $t->get_ok('/audit/today')
   ->status_is(302)
   ->header_like(Location => qr{/audit/\d\d\d\d/\d\d/\d\d$});
-
-diag $t->tx->res->to_string;
