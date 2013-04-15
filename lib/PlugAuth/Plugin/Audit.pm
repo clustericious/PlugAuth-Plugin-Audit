@@ -58,7 +58,13 @@ sub init
   
   $self->app->routes->route('/audit')->name('audit_check')->get(sub {
     my($c) = @_;
-    $c->stash->{autodata} = { version => $PlugAuth::Plugin::Audit // 'dev' };
+    my ($day,$month,$year) = (localtime(time))[3,4,5];
+    $year+=1900;
+    $month++;
+    $c->stash->{autodata} = {
+      today   => join('-', $year, sprintf("%02d", $month), sprintf("%02d", $day)),
+      version => $PlugAuth::Plugin::Audit // 'dev',
+    };
   });
   
   $self->app->routes->route('/audit/today')->name('audit_today')->get(sub {

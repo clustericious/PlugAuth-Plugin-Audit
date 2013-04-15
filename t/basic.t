@@ -4,7 +4,7 @@ use v5.10;
 BEGIN { delete $ENV{CLUSTERICIOUS_CONF_DIR} }
 use File::HomeDir::Test;
 use File::HomeDir;
-use Test::More tests => 18;
+use Test::More tests => 20;
 use Test::Mojo;
 use Path::Class::Dir;
 use YAML qw( Dump LoadFile );
@@ -29,6 +29,9 @@ my $t = Test::Mojo->new('PlugAuth');
 
 $t->get_ok('/audit')
   ->status_is(200);
+
+ok $t->tx->res->json->{version}, 'tx.res.json.version = ' . $t->tx->res->json->{version};
+like $t->tx->res->json->{today}, qr{^\d{4}-\d{2}-\d{2}$}, "today = " . $t->tx->res->json->{today};
 
 sub json($) {
     ( { 'Content-Type' => 'application/json' }, Mojo::JSON->new->encode(shift) );
