@@ -63,7 +63,7 @@ sub init
     $month++;
     $c->stash->{autodata} = {
       today   => join('-', $year, sprintf("%02d", $month), sprintf("%02d", $day)),
-      version => $PlugAuth::Plugin::Audit // 'dev',
+      version => $PlugAuth::Plugin::Audit::VERSION // 'dev',
     };
   });
   

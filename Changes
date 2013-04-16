@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - added VERSION
 
 0.02      2013-04-15 14:32:47 America/New_York
   - initial version
