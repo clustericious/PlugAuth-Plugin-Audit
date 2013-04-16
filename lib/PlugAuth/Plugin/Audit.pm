@@ -13,7 +13,7 @@ use DateTime;
 with 'PlugAuth::Role::Plugin';
 
 # ABSTRACT: Audit log for authentication/authorization
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 
 with 'PlugAuth::Role::Plugin';
@@ -29,7 +29,7 @@ sub init
     $month++;
     $c->stash->{autodata} = {
       today   => join('-', $year, sprintf("%02d", $month), sprintf("%02d", $day)),
-      version => $PlugAuth::Plugin::Audit // 'dev',
+      version => $PlugAuth::Plugin::Audit::VERSION // 'dev',
     };
   });
   
@@ -149,7 +149,7 @@ PlugAuth::Plugin::Audit - Audit log for authentication/authorization
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
