@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+  - use [ACPS::RPM]
+  - use MakeMaker instead of ModuleBuild
 
 0.03      2013-04-16 12:59:52 America/New_York
   - added VERSION
