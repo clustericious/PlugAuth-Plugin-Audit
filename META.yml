@@ -23,6 +23,6 @@ requires:
   PlugAuth: 0.09
   PlugAuth::Role::Plugin: 0
   Role::Tiny::With: 0
-  YAML: 0
+  YAML::XS: 0
   perl: v5.10.0
-version: 0.04
+version: 0.05
