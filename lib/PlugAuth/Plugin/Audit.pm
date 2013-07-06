@@ -7,7 +7,7 @@ use Role::Tiny::With;
 use Path::Class::Dir;
 use Path::Class::File;
 use File::HomeDir;
-use YAML qw( Dump LoadFile );
+use YAML::XS qw( Dump LoadFile );
 use DateTime;
 
 with 'PlugAuth::Role::Plugin';
