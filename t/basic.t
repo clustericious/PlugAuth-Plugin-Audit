@@ -12,7 +12,7 @@ use Path::Class::File;
 use Path::Class::Dir;
 
 delete $ENV{HARNESS_ACTIVE};
-$ENV{LOG_LEVEL} = 'TRACE';
+$ENV{LOG_LEVEL} = 'FATAL';
 
 my $etc = Path::Class::Dir
   ->new(File::HomeDir->my_home)
@@ -65,7 +65,7 @@ $t->get_ok("/audit/$year/$month/$day")
   ->status_is(200);
 
 is $t->tx->res->json->[0]->{event}, 'create_user', 'event = create_user';
-like $t->tx->res->json->[0]->{time_epoch},  qr{^\d+$}, 'time = ' . $t->tx->res->json->[0]->{time};
+like $t->tx->res->json->[0]->{time_epoch},  qr{^\d+$}, 'time = ' . $t->tx->res->json->[0]->{time_epoch};
 is $t->tx->res->json->[0]->{user},  'primus', 'user = primus';
   
 $year++;
