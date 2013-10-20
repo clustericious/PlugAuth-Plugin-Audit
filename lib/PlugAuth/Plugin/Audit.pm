@@ -75,7 +75,7 @@ sub init
     $c->redirect_to($c->url_for('audit', year => $year, month => sprintf("%02d", $month), day => sprintf("%02d", $day)));
   });
   
-  # FIXME: provide an interface for this
+  # TODO: provide an interface for this
   # in Clustericious
   my $auth = sub {
     my $c = shift;
