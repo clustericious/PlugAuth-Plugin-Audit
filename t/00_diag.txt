@@ -1,0 +1,12 @@
+DateTime
+ExtUtils::MakeMaker
+File::HomeDir
+File::HomeDir::Test
+Path::Class::Dir
+Path::Class::File
+PlugAuth
+PlugAuth::Role::Plugin
+Role::Tiny::With
+Test::Mojo
+Test::More
+YAML::XS
