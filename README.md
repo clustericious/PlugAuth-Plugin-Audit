@@ -33,7 +33,7 @@ Return the audit entries for the given day.
 
 ### GET /audit/today
 
-Redirects to the appropriate URL for todays audit log.
+Redirects to the appropriate URL for today's audit log.
 
 # AUTHOR
 
