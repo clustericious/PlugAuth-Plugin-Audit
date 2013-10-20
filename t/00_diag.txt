@@ -1,12 +1,9 @@
 DateTime
 ExtUtils::MakeMaker
 File::HomeDir
-File::HomeDir::Test
-Path::Class::Dir
-Path::Class::File
+Mojolicious
+Path::Class
 PlugAuth
-PlugAuth::Role::Plugin
-Role::Tiny::With
-Test::Mojo
+Role::Tiny
 Test::More
 YAML::XS
