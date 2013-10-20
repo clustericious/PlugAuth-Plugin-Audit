@@ -1,54 +1,47 @@
-=pod
+# PlugAuth::Plugin::Audit
 
-=head1 NAME
+Audit log for authentication/authorization
 
-PlugAuth::Plugin::Audit - Audit log for authentication/authorization
-
-=head1 VERSION
-
-version 0.03
-
-=head1 SYNOPSIS
+# SYNOPSIS
 
 PlugAuth.conf:
 
- ---
- plugins:
-   - PlugAuth::Plugin::Audit: {}
+    ---
+    plugins:
+      - PlugAuth::Plugin::Audit: {}
 
-=head1 ROUTES
+# ROUTES
 
-=head2 Public routes
+## Public routes
 
 These routes work for unauthenticated and unauthorized users.
 
-=head3 GET /audit
+### GET /audit
 
 You can do a simple GET on this route to see if the plugin is loaded.
 It will return a JSON string with the version of the plugin as the body
-and 200 if the plugin is available, if not L<PlugAuth> will return 404.
+and 200 if the plugin is available, if not [PlugAuth](http://search.cpan.org/perldoc?PlugAuth) will return 404.
 
-=head2 Accounts Routes
+## Accounts Routes
 
 These routes are available to users authenticates and authorized to perform
 the 'accounts' action.
 
-=head3 GET /audit/:year/:month/:day
+### GET /audit/:year/:month/:day
 
 Return the audit entries for the given day.
 
-=head3 GET /audit/today
+### GET /audit/today
 
 Redirects to the appropriate URL for todays audit log.
 
-=head1 AUTHOR
+# AUTHOR
 
 Graham Ollis <plicease@cpan.org>
 
-=head1 COPYRIGHT AND LICENSE
+# COPYRIGHT AND LICENSE
 
 This software is copyright (c) 2013 by Graham Ollis.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
