@@ -15,6 +15,12 @@ with 'PlugAuth::Role::Plugin';
 # ABSTRACT: Audit log for authentication/authorization
 # VERSION
 
+=head1 MOVED
+
+This is the old version of L<PlugAuth::Plugin::Audit> from before it was merged
+back into core L<PlugAuth>.  Please see the L<PlugAuth> main repository
+here: L<https://github.com/clustericious/PlugAuth>.
+
 =head1 SYNOPSIS
 
 PlugAuth.conf:
